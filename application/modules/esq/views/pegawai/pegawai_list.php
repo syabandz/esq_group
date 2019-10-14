@@ -25,7 +25,7 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="form-group form-float">
-                <select class="form-control show-tick" data-live-search="true" name="f_jabatan_id" id="f_jabatan_id" onchange="getCategory();">
+                <select class="form-control show-tick" data-live-search="true" name="f_jabatan_id" id="f_jabatan_id" onchange="getCategory()">
                     <option value=""> -- Select Jabatan -- </option>
                     <?php $select2_data = $this->db->get('t_jabatan')->result() ?>
                 <?php foreach($select2_data as $cat) { ?>
@@ -40,23 +40,25 @@
     <div class="panel-body">
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover" id="mytable">
+            <table class="table table-bordered table-striped table-hover" id="mytable"> 
                 <thead>
                     <tr class="bg-red">
                         <th>No</th>
-                        <th>ID Pegawai</th>
+                        <!-- <th>ID Pegawai</th> -->
                         <th>Kode Pegawai</th>
                         <th>Nama Pegawai</th>
                         <th>Alamat Pegawai</th>
-                        <th>Gaji Pegawai</th>
+                        <!-- <th>Gaji Pegawai</th> -->
                         <th>JK Pegawai</th>
                         <th>Status Pegawai</th>
                         <th>Nama Jabatan</th>
-                        <th>Photo Pegawai</th>
-                        <th>Pegawai Date Join</th>
+                        <!-- <th>Photo Pegawai</th>
+                        <th>Pegawai Date Join</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
+                <!-- <tbody  id="mytable2">
+                </tbody> -->
             </table>
         </div>
     </div>
@@ -100,7 +102,7 @@ $(document).ready(function() {
                 "data": "f_pegawai_id",
                 "orderable": false
             },
-            {"data": "f_pegawai_id"},{"data": "f_pegawai_kode"},{"data": "f_pegawai_nama"},{"data": "f_pegawai_alamat"},{"data": "f_pegawai_gaji"},{"data": "f_pegawai_jk"},{"data": "f_pegawai_status"},{"data": "f_jabatan_nama"},{"data": "f_pegawai_photo"},{"data": "f_pegawai_date_join"},
+            {"data": "f_pegawai_kode"},{"data": "f_pegawai_nama"},{"data": "f_pegawai_alamat"},{"data": "f_pegawai_jk"},{"data": "f_pegawai_status"},{"data": "f_jabatan_nama"},
             {
                 "data" : "action",
                 "orderable": false,
@@ -136,6 +138,42 @@ function getCategory(){
 			}
   	});
   }
+</script>
+
+<script type="text/javascript">
+// call search category book
+    // $("#f_jabatan_id").change(function(e){
+    //     var f_jabatan_id = $(this).val();
+    //     $.ajax({
+    //     url : "<?php //echo base_url().'esq/pegawai/categoryjson';?>",
+    //     type:"POST",
+    //     data: "f_jabatan_id="+f_jabatan_id,
+    //     dataType : "json",
+    //     success:function(data){
+    //            	$("#mytable2").empty();
+    //             var i = 0;                
+    //             $.each(data, function(i, item) {
+    //                 var no = ++i;
+    //                 var new_row = 
+    //                 '<tr>'
+    //                     +'<td>'+no+'</td>'
+    //                     +'<td>'+item.f_pegawai_kode+'</td>'
+    //                     +'<td>'+item.f_pegawai_nama+'</td>'
+    //                     +'<td>'+item.f_pegawai_alamat+'</td>'
+    //                     +'<td>'+item.f_pegawai_jk+'</td>'
+    //                     +'<td>'+item.f_pegawai_status+'</td>'
+    //                     +'<td>'+item.f_pegawai_id+'</td>'
+    //                     +'<td></td>'
+    //                 +'</tr>';
+    //                 ++i;
+    //                 $('#mytable2').append(new_row);
+    //             });
+    //         },
+    //         error:function(){
+	// 			alert("Search failed");
+	// 		}
+    //   	});
+    // });
 </script>
 
 <script type="text/javascript">

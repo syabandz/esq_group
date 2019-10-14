@@ -202,6 +202,14 @@ class Pegawai extends CI_Controller
         $this->load->view('esq/pegawai/pegawai_list2', $data);
 	}
 
+    public function categoryjson()
+	{
+
+        $categories = $this->input->post('f_jabatan_id');
+        $category = $this->db->get_where('t_pegawai',array('f_jabatan_id' => $categories ))->result();
+        echo json_encode($category);
+	}
+
     public function _rules() 
     {
 	$this->form_validation->set_rules('f_pegawai_nama', 'f pegawai nama', 'trim|required');
